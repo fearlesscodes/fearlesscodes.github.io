@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# website: http://ogp.me/ns/website#">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <meta name="description" content="">
+    <meta property="og:title" content="TDD Case Study with Angular and the polyline tag">
+    
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2019-10-06">
+    
+    <meta property="og:description" content="">
+    <meta property="og:url" content="http://fearlesscodes.github.io/post/tdd-case-study/">
+    <meta property="og:site_name" content="My dev journey">
+    
+    <meta name="generator" content="Hugo 0.59.0" />
+    <title>TDD Case Study with Angular and the polyline tag &middot; My dev journey</title>
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="http://fearlesscodes.github.io/css/style.css">
+    
+    <link href="http://fearlesscodes.github.io/index.xml" rel="alternate" type="application/rss+xml" title="My dev journey" />
+    
+    
+    <link rel="icon" href="http://fearlesscodes.github.io/favicon.ico" />
+    
+
+    
+    
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-fixed-top visible-xs">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			
+				<a class="navbar-brand" href="http://fearlesscodes.github.io/">ANTON TRUONG</a>
+			
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				
+				
+					<li><a href="http://fearlesscodes.github.io/about">About</a></li>
+				
+					<li><a href="http://fearlesscodes.github.io/post/">Posts</a></li>
+				
+					<li><a href="http://fearlesscodes.github.io/glossary/">Glossary</a></li>
+				
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="container-fluid">
+	<div class="row">
+		<div id="menu" class="hidden-xs col-sm-4 col-md-3">
+	<div id="menu-content" class="vertical-align">
+		
+			<h1 class="text-center"><a href="http://fearlesscodes.github.io/">ANTON TRUONG</a></h1>
+		
+		
+		
+			<small class="text-center center-block">MY DEV JOURNEY</small>
+		
+		
+		
+			<img id="profile-pic" src="http://fearlesscodes.github.io//img/main/profilePic.png" alt="My Picture" class="img-circle center-block">
+		
+		<div id="social" class="text-center">
+			
+				<a href="https://github.com/fearlesscodes"><i class="fa fa-github fa-2x"></i></a>
+			
+				<a href="https://www.xing.com/profile/Anton_Truong"><i class="fa fa-xing fa-2x"></i></a>
+			
+
+			<a href="mailto:antont86@gmail.com"><i class="fa fa-envelope-o fa-2x"></i></a>
+		</div>
+		<div id="links" class="text-center">
+			
+			
+				<a href="http://fearlesscodes.github.io/about">About</a>
+			
+				<a href="http://fearlesscodes.github.io/post/">Posts</a>
+			
+				<a href="http://fearlesscodes.github.io/glossary/">Glossary</a>
+			
+		</div>
+	</div>
+</div>
+
+		<div id="content" class="col-xs-12 col-sm-8 col-md-9">
+			<div class="row">
+				<div id="post" class="col-sm-offset-1 col-sm-10 col-md-10 col-lg-8">
+
+<main>
+	<header>
+		<h1>TDD Case Study with Angular and the polyline tag</h1>
+	</header>
+
+	<article>
+		<p>In this post I want to talk about how I encountered a situation where I applied an aspect of
+Test Driven Development and Clean Code. It lets you write and refactor your code without any fear of breaking it and
+analyze and philosophise about the usability of functions or components.</p>
+
+<p>This post is about creating a component in Angular which should receive a list of x,y-points which
+will be displayed as a svg polyline html element.</p>
+
+<p>Our journey begins with to have displayed the points in the view
+ we need an svg and polyline element in the polyline component.</p>
+
+<p>In the polyline.component.spec.ts we expect that the polyline component contains these two elements.</p>
+
+<pre><code>describe('PolylineComponent', () =&gt; {
+  ...
+  let svgDebugElement: DebugElement;
+
+  beforeEach(async(() =&gt; {
+       ...
+  }));
+
+  beforeEach(() =&gt; {
+    fixture = TestBed.createComponent(PolylineComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+    svgDebugElement = fixture.debugElement.query(By.css('svg'));
+  });
+
+  it('contain a svg and polyline element', () =&gt; {
+    expect(svgDebugElement).toBeDefined();
+  });
+});
+</code></pre>
+
+<p>First we get the svg attribute from the component and expect it to be defined. If we run:</p>
+
+<pre><code>npm run test
+</code></pre>
+
+<p>We would get an error. Therefore in our polyline component.ts we add:</p>
+
+<pre><code>@ViewChild('svg', { static: true })
+svg: ElementRef;
+</code></pre>
+
+<p>This will get the svg element from the component.html, but still we get an error in our test. To solve this problem
+we add this into the html:</p>
+
+<pre><code>&lt;svg width=&quot;1000&quot; height=&quot;1000&quot; #svg&gt;
+&lt;/svg&gt;
+</code></pre>
+
+<p>And voila our test is green. The next step is to expect that we have a polyline element which will be analog
+to the svg case above.
+In the spec.ts:</p>
+
+<pre><code>  ...
+  let polylineDebugElement: DebugElement;
+
+  beforeEach(() =&gt; {
+    ...
+    polylineDebugElement = fixture.debugElement.query(By.css('polyline'));
+  });
+
+  it('contain a svg and polyline element', () =&gt; {
+    expect(svgDebugElement).toBeDefined();
+    expect(polylineDebugElement).toBeDefined();
+  });
+</code></pre>
+
+<p>So our test is running red again but that&rsquo;s ok. We are adding in the following files component.ts:</p>
+
+<pre><code>  @ViewChild('poly', { static: true })
+  poly: ElementRef;
+</code></pre>
+
+<p>component.html:</p>
+
+<pre><code>&lt;svg width=&quot;1000&quot; height=&quot;1000&quot; #svg&gt;
+    &lt;polyline points=&quot;&quot;
+              style=&quot;fill:none;stroke:black;stroke-width:3&quot; #poly/&gt;
+&lt;/svg&gt;
+</code></pre>
+
+<p>Now that we have the polyline element we can look through its api beginning from poly.points. We find out that it has
+the method appendItem() and according to <a href="http://html5index.org/SVG%20-%20SVGPointList.html">HTML5index.org</a> it accepts
+points of type SVGPoint. To create SVGPoints we can use our svg element inside of our component.ts.</p>
+
+<pre><code>    // To create a SVGPoint
+    const svgPoint = svgDebugElement.nativeElement.createSVGPoint();
+</code></pre>
+
+<p>To think in the TDD way we are writing our expectation what the component should do.
+- As the polyline api accepts only SVGPoint objects, we want to insert a list of SVGPoints into that component.</p>
+
+<pre><code>// E.g.
+&lt;polyline-component [points]&gt;&lt;/...&gt;
+</code></pre>
+
+<p>We write a new test where we insert a list of SVGPoints into that component and expect that the polyline
+element contains the same number of points.</p>
+
+<pre><code>it('Expect number of points in the polyline element', () =&gt; {
+    // Creating SVGPoints
+    const svgPoints = [];
+    const svg: SVGSVGElement = svgDebugElement.nativeElement;
+    const point1 = svg.createSVGPoint();
+    point1.x = 100;
+    point1.y = 100;
+    const point2 = svg.createSVGPoint();
+    point2.x = 100;
+    point2.y = 100;
+    svgPoints.push(point1, point2);
+    component.points = svgPoints;
+    component.ngOnInit();
+
+    const polyline: SVGPolylineElement = polylineDebugElement.nativeElement;
+    // Important part of this test
+    expect(polyline.points.length).toBe(2);
+});
+</code></pre>
+
+<p>At this point we have a compiler error because the input attribute <em>component.points</em> does not exist yet. To solve
+this problem we just add a class variable in <em>component.ts</em> and decorate it with <em>@Input()</em>:</p>
+
+<pre><code>@Input()
+points: SVGPoint[] = [];
+</code></pre>
+
+<p>The test runs and ends in an expected error <em>Expected 0 to be 2</em>. That&rsquo;s because we insert two points and expected two points
+to be contained in the polyline element.</p>
+
+<p>Now here start the nice part about TDD. We will implement the logic until the application meets the our expectation.</p>
+
+<pre><code>  ngOnInit() {
+    const polyNativeElement: SVGPolylineElement = this.poly.nativeElement;
+    this.points.forEach(point =&gt; {
+      polyNativeElement.points.appendItem(point);
+    });
+</code></pre>
+
+<p>Finish? Not really. According to Clean Code we first needed tests to ensure that the behaviour of the
+feature is written down. Now we analyse the code of the test. This is a good place where developers can discuss
+about the usability of the component.</p>
+
+<p>We have here an issue to point out:</p>
+
+<pre><code>const svg: SVGSVGElement = svgDebugElement.nativeElement;
+</code></pre>
+
+<p>By relying on an element inside of the component itself to create SVGPoints, we have here a hen egg problem. To create
+the component we need the svg element inside of this component which will be created. To solve this we move the
+creation of SVG points into that component and just pass a list of other elements which contains the x,y coordinates
+and can be created outside without any dependencies of the component itself.</p>
+
+<pre><code>it('Expect number of points in the polyline element using default DOMPoint objects', async(() =&gt; {
+    // Creating DomPoints
+    const domPoints = [];
+    const point1 = new DOMPoint(100, 100);
+    const point2 = new DOMPoint(100, 100);
+    domPoints.push(point1, point2);
+    component.points = domPoints;
+    component.ngOnInit();
+
+    const polyline: SVGPolylineElement = polylineDebugElement.nativeElement;
+    // Important part of this test
+    expect(polyline.points.length).toBe(2);
+  }));
+</code></pre>
+
+<p>Here we can use DOMPoint to create the points and pass them into that component. Of course the test will fail.
+So back to our implementation and change it until it&rsquo;s green again.</p>
+
+<pre><code>  ngOnInit() {
+    const polyNativeElement: SVGPolylineElement = this.poly.nativeElement;
+    const svgGenerator: SVGSVGElement = this.svg.nativeElement;
+    this.points.forEach(point =&gt; {
+      const svgPoint = svgGenerator.createSVGPoint();
+      svgPoint.x = point.x;
+      svgPoint.y = point.y;
+      polyNativeElement.points.appendItem(svgPoint);
+    });
+</code></pre>
+
+<p>Now remove the old test and you are done!</p>
+
+	</article>
+</main>
+
+<div id="bottom-nav" class="text-center center-block">
+	<a href=" http://fearlesscodes.github.io/" class="btn btn-default"><i class="fa fa-home"></i> Home</a>
+</div>
+
+
+  <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "shortcode-here" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+  </div>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'code-here', 'auto');
+    ga('send', 'pageview');
+    window.baseURL = "http:\/\/fearlesscodes.github.io\/";
+  </script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+  
+  
+  <script src="http://fearlesscodes.github.io//js/App.js"></script>
+  
+</body>
+</html>
