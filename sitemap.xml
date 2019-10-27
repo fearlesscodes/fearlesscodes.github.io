@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
@@ -8,36 +8,40 @@
   </url>
   
   <url>
-    <loc>https://fearlesscodes.github.io/glossary/</loc>
-    <lastmod>2019-10-09T21:45:59+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://fearlesscodes.github.io/</loc>
-    <lastmod>2019-10-09T21:45:59+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://fearlesscodes.github.io/post/</loc>
-    <lastmod>2019-10-06T21:45:59+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://fearlesscodes.github.io/post/tdd-case-study/</loc>
     <lastmod>2019-10-06T21:45:59+02:00</lastmod>
   </url>
   
   <url>
     <loc>https://fearlesscodes.github.io/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://fearlesscodes.github.io/glossary/</loc>
+    <lastmod>2019-10-09T21:45:59+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://fearlesscodes.github.io/</loc>
+    <lastmod>2019-10-09T21:45:59+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://fearlesscodes.github.io/post/</loc>
+    <lastmod>2019-10-06T21:45:59+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://fearlesscodes.github.io/tags/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://fearlesscodes.github.io/tutorials/</loc>
+    <priority>0</priority>
   </url>
   
 </urlset>
