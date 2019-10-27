@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on My dev journey</title>
-    <link>http://fearlesscodes.github.io/post/</link>
+    <link>https://fearlesscodes.github.io/post/</link>
     <description>Recent content in Posts on My dev journey</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 06 Oct 2019 21:45:59 +0200</lastBuildDate>
     
-	<atom:link href="http://fearlesscodes.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://fearlesscodes.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>TDD Case Study with Angular and the polyline tag</title>
-      <link>http://fearlesscodes.github.io/post/tdd-case-study/</link>
+      <link>https://fearlesscodes.github.io/post/tdd-case-study/</link>
       <pubDate>Sun, 06 Oct 2019 21:45:59 +0200</pubDate>
       
-      <guid>http://fearlesscodes.github.io/post/tdd-case-study/</guid>
+      <guid>https://fearlesscodes.github.io/post/tdd-case-study/</guid>
       <description>In this post I want to talk about how I encountered a situation where I applied an aspect of Test Driven Development and Clean Code. It lets you write and refactor your code without any fear of breaking it and analyze and philosophise about the usability of functions or components.
 This post is about creating a component in Angular which should receive a list of x,y-points which will be displayed as a svg polyline html element.</description>
     </item>
