@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Aws on My dev journey</title>
+    <link>https://fearlesscodes.github.io/aws/</link>
+    <description>Recent content in Aws on My dev journey</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 29 Oct 2019 15:37:30 +0100</lastBuildDate>
+    
+	<atom:link href="https://fearlesscodes.github.io/aws/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Sso With Cognito</title>
+      <link>https://fearlesscodes.github.io/aws/sso-with-cognito/</link>
+      <pubDate>Tue, 29 Oct 2019 15:37:30 +0100</pubDate>
+      
+      <guid>https://fearlesscodes.github.io/aws/sso-with-cognito/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
