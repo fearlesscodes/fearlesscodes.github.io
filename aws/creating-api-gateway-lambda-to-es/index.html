@@ -4,17 +4,17 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <meta name="description" content="">
-    <meta property="og:title" content="Sso With Cognito">
+    <meta property="og:title" content="Architecture of a SSO and role based endpoint with an API gateway, lambda function and elastic search ">
     
     <meta property="og:type" content="article">
     <meta property="article:published_time" content="2019-10-29">
     
     <meta property="og:description" content="">
-    <meta property="og:url" content="https://fearlesscodes.github.io/aws/sso-with-cognito/">
+    <meta property="og:url" content="https://fearlesscodes.github.io/aws/creating-api-gateway-lambda-to-es/">
     <meta property="og:site_name" content="My dev journey">
     
     <meta name="generator" content="Hugo 0.54.0" />
-    <title>Sso With Cognito &middot; My dev journey</title>
+    <title>Architecture of a SSO and role based endpoint with an API gateway, lambda function and elastic search  &middot; My dev journey</title>
     
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
@@ -105,11 +105,45 @@
 
 <main>
 	<header>
-		<h1>Sso With Cognito</h1>
+		<h1>Architecture of a SSO and role based endpoint with an API gateway, lambda function and elastic search </h1>
 	</header>
 
 	<article>
 		
+
+<p>We create an architecture for a realistic scenario in AWS with an API Gateway, Lambda function and elastic search. To complete this we attach security based on a SSO and roles.</p>
+
+<h2 id="scenario">Scenario</h2>
+
+<p><img src="/img/aws/architecture-overview.png" alt="Architecture overview" /></p>
+
+<ol>
+<li>The application redirects the user to the AWS SSO (Cognito)</li>
+<li>Cognito redirects the user back to the application</li>
+<li>The request will be sent to the API Gateway
+
+<ul>
+<li>Note: The Gateway can be configured to authenicate the token sent by the application</li>
+</ul></li>
+<li>In the Lamda function it creates a query to get an Elastic Search result
+
+<ul>
+<li>Note: Using roles attach to the lambda function and configuring the Elastic Search Access Policy to allow access from services with this role attached</li>
+</ul></li>
+</ol>
+
+<h2 id="detailed-architecture">Detailed architecture</h2>
+
+<p><img src="/img/aws/architecture-overview-detailed.png" alt="Detailed architecture" /></p>
+
+<ol>
+<li>Create user pool with all necessary settings</li>
+<li>Create gateway authorizer and an endpoint. Attach authorizer to the endpoint</li>
+<li>In IAM create a role with permission to access the ES</li>
+<li>Create a lambda function and attach the role to it</li>
+<li>Modify the access policy of ES to allow access from newly created role</li>
+</ol>
+
 	</article>
 </main>
 

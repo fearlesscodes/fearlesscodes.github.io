@@ -6,18 +6,19 @@
     <description>Recent content on My dev journey</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 29 Oct 2019 15:37:30 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 29 Oct 2019 15:37:09 +0100</lastBuildDate>
     
 	<atom:link href="https://fearlesscodes.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Sso With Cognito</title>
-      <link>https://fearlesscodes.github.io/aws/sso-with-cognito/</link>
-      <pubDate>Tue, 29 Oct 2019 15:37:30 +0100</pubDate>
+      <title>Architecture of a SSO and role based endpoint with an API gateway, lambda function and elastic search </title>
+      <link>https://fearlesscodes.github.io/aws/creating-api-gateway-lambda-to-es/</link>
+      <pubDate>Tue, 29 Oct 2019 15:37:09 +0100</pubDate>
       
-      <guid>https://fearlesscodes.github.io/aws/sso-with-cognito/</guid>
-      <description></description>
+      <guid>https://fearlesscodes.github.io/aws/creating-api-gateway-lambda-to-es/</guid>
+      <description>We create an architecture for a realistic scenario in AWS with an API Gateway, Lambda function and elastic search. To complete this we attach security based on a SSO and roles.
+Scenario  The application redirects the user to the AWS SSO (Cognito) Cognito redirects the user back to the application The request will be sent to the API Gateway  Note: The Gateway can be configured to authenicate the token sent by the application  In the Lamda function it creates a query to get an Elastic Search result  Note: Using roles attach to the lambda function and configuring the Elastic Search Access Policy to allow access from services with this role attached   Detailed architecture  Create user pool with all necessary settings Create gateway authorizer and an endpoint.</description>
     </item>
     
     <item>
