@@ -113,6 +113,29 @@
 	<div class="panel panel-default">
 	<div class="panel-header">
 		<h3>
+			<a href="https://fearlesscodes.github.io/post/creating-api-gateway-lambda-to-es/">Architecture of a SSO and role based endpoint with an API gateway, lambda function and elastic search </a>
+			<br>
+			<small>
+				29 October 2019
+			</small>
+		</h3>
+	</div>
+	<div class="panel-body">
+		We create an architecture for a realistic scenario in AWS with an API Gateway, Lambda function and elastic search. To complete this we attach security based on a SSO and roles.
+Scenario  The application redirects the user to the AWS SSO (Cognito) Cognito redirects the user back to the application The request will be sent to the API Gateway  Note: The Gateway can be configured to authenicate the token sent by the application  In the Lamda function it creates a query to get an Elastic Search result  Note: Using roles attach to the lambda function and configuring the Elastic Search Access Policy to allow access from services with this role attached   Detailed architecture  Create user pool with all necessary settings Create gateway authorizer and an endpoint.
+		
+			... <a href="https://fearlesscodes.github.io/post/creating-api-gateway-lambda-to-es/">Read More</a>
+		
+	</div>
+	<div class="panel-footer">
+		
+	</div>
+</div>
+
+
+	<div class="panel panel-default">
+	<div class="panel-header">
+		<h3>
 			<a href="https://fearlesscodes.github.io/post/tdd-case-study/">TDD Case Study with Angular and the polyline tag</a>
 			<br>
 			<small>
