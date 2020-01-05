@@ -57,8 +57,8 @@ This post is about creating a component in Angular which should receive a list o
       
       <guid>https://fearlesscodes.github.io/about/</guid>
       <description>Hi,
-I am Anton and a full-stack developer with currently these technologies:
- Angular Java (Spring) Gitlab Docker Kubernetes  I began with Angular and Java at my first job and at the end of my first job I gained more knowledge about packaging and deploying the applications with Gitlab, Docker and Kubernetes.
+I am Anton and a full-stack developer with currently these technology stack:
+ Angular Java (Spring) Flutter Gitlab Docker Kubernetes  I began with Angular and Java at my first job and at the end of my first job I gained more knowledge about packaging and deploying the applications with Gitlab, Docker and Kubernetes.
 The next challenge was to acquire DevOps skills at my next job. My role was halftime full-stack developer and halftime DevOps where I mainly was responsible for monitoring, building pipelines and clarifying incidents.</description>
     </item>
     
