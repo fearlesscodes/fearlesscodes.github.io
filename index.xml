@@ -28,7 +28,7 @@ Scenario  The application redirects the user to the AWS SSO (Cognito) Cognito re
       
       <guid>https://fearlesscodes.github.io/glossary/git/</guid>
       <description> Git commands with specific keys ssh-agent bash -c &#39;ssh-add ~/.ssh/id_github; git clone git@gitRepoUrl&#39; ssh-agent bash -c &#39;ssh-add ~/.ssh/id_github; git pull&#39; ssh-agent bash -c &#39;ssh-add ~/.ssh/id_github; git push&#39;  Important things to know Private keys should have permission of 600
-chmod 0600 ~/private_key  </description>
+chmod 0600 ~/private_key  Delete all merged branches git branch --merged | egrep -v &amp;quot;(^\*|master|develop)&amp;quot; | xargs git branch -d  </description>
     </item>
     
     <item>

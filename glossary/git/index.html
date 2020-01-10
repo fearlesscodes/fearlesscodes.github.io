@@ -125,6 +125,11 @@ ssh-agent bash -c 'ssh-add ~/.ssh/id_github; git push'
 <pre><code>chmod 0600 ~/private_key
 </code></pre>
 
+<h2 id="delete-all-merged-branches">Delete all merged branches</h2>
+
+<pre><code>git branch --merged | egrep -v &quot;(^\*|master|develop)&quot; | xargs git branch -d
+</code></pre>
+
 	</article>
 </main>
 
