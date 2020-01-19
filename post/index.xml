@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on My dev journey</title>
+    <title>Posts on fearlessdeveloper Blog</title>
     <link>https://fearlesscodes.github.io/post/</link>
-    <description>Recent content in Posts on My dev journey</description>
+    <description>Recent content in Posts on fearlessdeveloper Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 29 Oct 2019 15:37:09 +0100</lastBuildDate>
